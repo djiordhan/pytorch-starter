@@ -4,3 +4,6 @@ torchaudio
 numpy
 tqdm
 requests
+matplotlib
+Pillow
+
