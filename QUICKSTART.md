@@ -5,10 +5,10 @@
 ### Installation
 
 ```bash
-# Clone or navigate to the project directory
+# Navigate to the project directory
 cd pytorch-starter
 
-# Install all dependencies
+# Install all dependencies (shared by both examples)
 pip install -r requirements.txt
 ```
 
@@ -16,13 +16,19 @@ pip install -r requirements.txt
 
 ## 📝 Example 1: Text Generation (LLM)
 
+### Navigate to the example
+
+```bash
+cd example-llm
+```
+
 ### Step-by-step
 
 1. **Download the dataset:**
    ```bash
    python prepare_data.py
    ```
-   This downloads the Tiny Shakespeare dataset (~1MB).
+   This downloads the Tiny Shakespeare dataset (~1MB) to `data/tinyshakespeare.txt`.
 
 2. **Train the model:**
    ```bash
@@ -31,6 +37,7 @@ pip install -r requirements.txt
    - Training takes ~5-10 minutes on CPU
    - You'll see loss decreasing every 300 steps
    - At the end, it generates Shakespeare-like text
+   - Model saved to `model.pth`
 
 3. **What to expect:**
    ```
@@ -47,10 +54,17 @@ pip install -r requirements.txt
 - `model.py` - See how a Transformer is built
 - `train.py` - Understand the training loop
 - `dataset.py` - Learn about tokenization
+- `README.md` - Detailed documentation
 
 ---
 
 ## 🖼️ Example 2: Image Classification (CIFAR-10)
+
+### Navigate to the example
+
+```bash
+cd example-image-classifier
+```
 
 ### Step-by-step
 
@@ -58,7 +72,7 @@ pip install -r requirements.txt
    ```bash
    python train_image.py
    ```
-   - Downloads CIFAR-10 automatically (~170MB)
+   - Downloads CIFAR-10 automatically (~170MB) to `data/`
    - Training takes ~20-30 minutes on CPU, ~5 minutes on GPU
    - Saves the best model to `image_classifier.pth`
 
@@ -97,6 +111,7 @@ MODEL_TYPE = 'resnet'  # instead of 'simple'
 - `train_image.py` - Complete training pipeline
 - `image_dataset.py` - Data loading and augmentation
 - `predict_image.py` - Inference and prediction
+- `README.md` - Detailed documentation
 
 ---
 
@@ -123,11 +138,13 @@ MODEL_TYPE = 'resnet'  # instead of 'simple'
 
 ### "No module named 'torch'"
 ```bash
+# From project root
 pip install -r requirements.txt
 ```
 
 ### "Dataset not found" (LLM)
 ```bash
+cd example-llm
 python prepare_data.py
 ```
 
@@ -141,6 +158,18 @@ BATCH_SIZE = 64  # or 32
 - LLM: Reduce `max_iters` or `n_layer` in respective files
 - Image: Reduce `EPOCHS` or `BATCH_SIZE`
 - Consider using Google Colab for free GPU access
+
+### Import errors after reorganization
+Make sure you're in the correct directory:
+```bash
+# For LLM
+cd example-llm
+python train.py
+
+# For Image Classifier
+cd example-image-classifier
+python train_image.py
+```
 
 ---
 
@@ -168,11 +197,13 @@ BATCH_SIZE = 64  # or 32
 1. Run both examples with default settings
 2. Read through the comments in each file
 3. Experiment with one hyperparameter at a time
+4. Read the example-specific READMEs
 
 ### Intermediate (Week 2)
 1. Modify the SimpleCNN architecture (add layers)
 2. Try different optimizers (SGD, AdamW)
 3. Implement a custom dataset for the image classifier
+4. Train the LLM on your own text
 
 ### Advanced (Week 3+)
 1. Combine both: Build an image captioning model
@@ -199,5 +230,35 @@ After mastering these examples:
 - [PyTorch Tutorials](https://pytorch.org/tutorials/)
 - [CS231n Course](http://cs231n.stanford.edu/)
 - [Fast.ai Course](https://course.fast.ai/)
+
+---
+
+## 📁 Project Structure
+
+```
+pytorch-starter/
+├── requirements.txt           # Shared dependencies
+├── README.md                  # Main documentation
+├── QUICKSTART.md             # This file
+├── COMPARISON.md             # Detailed comparison
+│
+├── example-llm/              # Language Model Example
+│   ├── README.md
+│   ├── model.py
+│   ├── dataset.py
+│   ├── train.py
+│   ├── prepare_data.py
+│   └── data/                 # LLM data directory
+│
+└── example-image-classifier/ # Image Classifier Example
+    ├── README.md
+    ├── image_model.py
+    ├── image_dataset.py
+    ├── train_image.py
+    ├── predict_image.py
+    └── data/                 # Image data directory
+```
+
+---
 
 Happy Learning! 🚀
