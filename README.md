@@ -361,4 +361,34 @@ This project is open source and available for educational purposes.
 
 **Happy Learning! 🚀**
 
+
 Start with either example, experiment, and most importantly - have fun building with PyTorch!
+
+## Next Steps to Explore
+- **Hyperparameters**: Try changing `n_layer`, `n_head`, or `n_embd` in `model.py` and see how it affects training speed and generated text quality.
+- **Dataset**: Swap out `tinyshakespeare.txt` for your own text file to train the model on different styles of writing.
+- **Tokenization**: Instead of character-level, try implementing a sub-word tokenizer like BPE (Byte Pair Encoding).
+
+## Example: Load a Model and Dataset from Hugging Face
+If you want to experiment with pretrained models and hosted datasets, the Hugging Face Hub makes it easy to pull both:
+
+```bash
+pip install transformers datasets
+```
+
+```python
+from datasets import load_dataset
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train")
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+model = AutoModelForCausalLM.from_pretrained("gpt2")
+
+sample = dataset[0]["text"]
+inputs = tokenizer(sample, return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=50)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```
+
+This example downloads the Wikitext-2 dataset and GPT-2 model, then generates text from the first dataset sample.
+
