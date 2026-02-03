@@ -1,2 +1,29 @@
-/data
-/_pycache_
+# Data directories
+/example-llm/data/
+/example-image-classifier/data/
+/data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*/__pycache__/
+
+# Trained models
+*.pth
+example-llm/*.pth
+example-image-classifier/*.pth
+
+# Generated images
+sample_images.png
+example-image-classifier/sample_images.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
