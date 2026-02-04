@@ -8,7 +8,7 @@
 # Navigate to the project directory
 cd pytorch-starter
 
-# Install all dependencies (shared by both examples)
+# Install all dependencies (shared by all examples)
 pip install -r requirements.txt
 ```
 
@@ -115,6 +115,40 @@ MODEL_TYPE = 'resnet'  # instead of 'simple'
 
 ---
 
+## ✨ Example 3: Diffusion Model (MNIST)
+
+### Navigate to the example
+
+```bash
+cd example-diffusion-model
+```
+
+### Step-by-step
+
+1. **Train the diffusion model:**
+   ```bash
+   python train.py --epochs 5 --batch-size 128
+   ```
+   - Downloads MNIST automatically (~60MB)
+   - Trains a noise-prediction network on diffusion timesteps
+   - Saves `diffusion_mnist.pth` when finished
+
+2. **What to expect:**
+   ```
+   Epoch 1: average loss 0.9732
+   Epoch 2: average loss 0.8127
+   ...
+   Saved model to diffusion_mnist.pth
+   ```
+
+### Files to explore
+- `model.py` - Timestep-conditioned noise predictor
+- `dataset.py` - MNIST data loader
+- `train.py` - Diffusion training loop
+- `README.md` - Detailed documentation
+
+---
+
 ## 🎯 Tips for Success
 
 ### For LLM Example:
@@ -159,6 +193,11 @@ BATCH_SIZE = 64  # or 32
 - Image: Reduce `EPOCHS` or `BATCH_SIZE`
 - Consider using Google Colab for free GPU access
 
+### For Diffusion Model:
+- Increase `--timesteps` for higher-quality samples
+- Add a sampling script to visualize generated digits
+- Try Fashion-MNIST for a slightly harder dataset
+
 ### Import errors after reorganization
 Make sure you're in the correct directory:
 ```bash
@@ -194,7 +233,7 @@ python train_image.py
 ## 🎓 Learning Path
 
 ### Beginner (Week 1)
-1. Run both examples with default settings
+1. Run the LLM and image classifier examples with default settings
 2. Read through the comments in each file
 3. Experiment with one hyperparameter at a time
 4. Read the example-specific READMEs
@@ -218,7 +257,7 @@ python train_image.py
 After mastering these examples:
 1. **Object Detection**: YOLO or Faster R-CNN
 2. **Semantic Segmentation**: U-Net or DeepLab
-3. **Generative Models**: VAE or GAN
+3. **Generative Models**: VAE, GAN, or diffusion
 4. **Advanced NLP**: BERT fine-tuning or GPT-2
 5. **Reinforcement Learning**: DQN or PPO
 
@@ -250,13 +289,19 @@ pytorch-starter/
 │   ├── prepare_data.py
 │   └── data/                 # LLM data directory
 │
-└── example-image-classifier/ # Image Classifier Example
+├── example-image-classifier/ # Image Classifier Example
+│   ├── README.md
+│   ├── image_model.py
+│   ├── image_dataset.py
+│   ├── train_image.py
+│   ├── predict_image.py
+│   └── data/                 # Image data directory
+│
+└── example-diffusion-model/  # Diffusion Model Example
     ├── README.md
-    ├── image_model.py
-    ├── image_dataset.py
-    ├── train_image.py
-    ├── predict_image.py
-    └── data/                 # Image data directory
+    ├── dataset.py
+    ├── model.py
+    └── train.py
 ```
 
 ---
