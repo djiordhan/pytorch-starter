@@ -1,9 +1,11 @@
-# PyTorch Starter: Two Complete Examples
+# PyTorch Starter: Multiple Complete Examples
 
-This project provides beginner-friendly introductions to PyTorch with **two complete, self-contained examples**:
+This project provides beginner-friendly introductions to PyTorch with **multiple complete, self-contained examples**:
 
 1. **Character-Level Language Model (LLM)** - Text generation using Transformers
 2. **Image Classifier (CIFAR-10)** - Computer vision with CNNs
+3. **Object Detection** - Lightweight scaffolding for detection models
+4. **Diffusion Model (MNIST)** - Generative modeling with noise prediction
 
 Each example is in its own directory with dedicated documentation and data storage.
 
@@ -15,7 +17,7 @@ Each example is in its own directory with dedicated documentation and data stora
 pytorch-starter/
 ├── README.md                      # This file
 ├── QUICKSTART.md                  # Quick start guide
-├── COMPARISON.md                  # Detailed comparison of both examples
+├── COMPARISON.md                  # Detailed comparison of LLM + image classifier
 ├── PROJECT_STRUCTURE.md           # Complete documentation
 ├── requirements.txt               # Shared dependencies
 │
@@ -28,14 +30,27 @@ pytorch-starter/
 │   └── data/                      # LLM data directory
 │       └── tinyshakespeare.txt
 │
-└── example-image-classifier/      # Example 2: Image Classifier
-    ├── README.md                  # Image classifier documentation
-    ├── image_model.py             # CNN architectures
-    ├── image_dataset.py           # CIFAR-10 data loading
-    ├── train_image.py             # Training script
-    ├── predict_image.py           # Inference script
-    └── data/                      # Image data directory
-        └── cifar-10-batches-py/
+├── example-image-classifier/      # Example 2: Image Classifier
+│   ├── README.md                  # Image classifier documentation
+│   ├── image_model.py             # CNN architectures
+│   ├── image_dataset.py           # CIFAR-10 data loading
+│   ├── train_image.py             # Training script
+│   ├── predict_image.py           # Inference script
+│   └── data/                      # Image data directory
+│       └── cifar-10-batches-py/
+│
+├── example-object-detection/      # Example 3: Object Detection
+│   ├── README.md                  # Object detection documentation
+│   ├── dataset.py                 # Dataset helpers
+│   ├── model.py                   # Model builder
+│   ├── train.py                   # Training scaffold
+│   └── requirements.txt           # Example-specific dependencies
+│
+└── example-diffusion-model/       # Example 4: Diffusion Model
+    ├── README.md                  # Diffusion model documentation
+    ├── dataset.py                 # MNIST data loader
+    ├── model.py                   # Noise predictor model
+    └── train.py                   # Training script
 ```
 
 ---
@@ -45,7 +60,7 @@ pytorch-starter/
 ### Installation
 
 ```bash
-# Install dependencies (shared by both examples)
+# Install dependencies (shared by all examples)
 pip install -r requirements.txt
 ```
 
@@ -83,6 +98,19 @@ python predict_image.py path/to/image.jpg
 **Result:** Achieves 65-70% accuracy on CIFAR-10 after ~20-30 minutes of training.
 
 📖 **[Read the Image Classifier README](example-image-classifier/README.md)** for detailed instructions.
+
+### Example 3: Diffusion Model (MNIST)
+
+```bash
+cd example-diffusion-model
+
+# Train the model
+python train.py --epochs 5 --batch-size 128
+```
+
+**Result:** Learns to predict noise on MNIST digits for a DDPM-style setup.
+
+📖 **[Read the Diffusion README](example-diffusion-model/README.md)** for detailed instructions.
 
 ---
 
@@ -140,10 +168,11 @@ python predict_image.py path/to/image.jpg
 - ✅ Have some ML background
 - ✅ Enjoy creative, generative tasks
 
-### Do Both! 🎓
+### Try Multiple! 🎓
 They teach complementary concepts:
 - **LLM**: Sequence modeling, attention, autoregressive generation
 - **Image Classifier**: Spatial features, data augmentation, classification metrics
+- **Diffusion**: Generative modeling with noise schedules
 
 ---
 
@@ -169,11 +198,13 @@ Each example has its own comprehensive README:
 
 - **[example-llm/README.md](example-llm/README.md)** - Complete guide for the language model
 - **[example-image-classifier/README.md](example-image-classifier/README.md)** - Complete guide for the image classifier
+- **[example-object-detection/README.md](example-object-detection/README.md)** - Guide for the object detection scaffold
+- **[example-diffusion-model/README.md](example-diffusion-model/README.md)** - Complete guide for the diffusion model
 
 Additional documentation:
 
 - **[QUICKSTART.md](QUICKSTART.md)** - Step-by-step getting started guide
-- **[COMPARISON.md](COMPARISON.md)** - Detailed comparison of both examples
+- **[COMPARISON.md](COMPARISON.md)** - Detailed comparison of the LLM and image classifier
 - **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - File-by-file documentation
 
 ---
@@ -198,7 +229,7 @@ pip install -r requirements.txt
 
 **GPU Support:**
 - CUDA-enabled GPU recommended but not required
-- Both examples work on CPU (just slower)
+- All examples work on CPU (just slower)
 - Training is 5-10× faster on GPU
 
 ---
@@ -207,7 +238,7 @@ pip install -r requirements.txt
 
 ### Week 1: Get Started
 1. Install dependencies
-2. Run both examples with default settings
+2. Run the LLM and image classifier examples with default settings
 3. Read through the code comments
 4. Understand the basic training loop
 
@@ -255,7 +286,7 @@ pip install -r requirements.txt
 
 ## 🚀 Next Steps
 
-After completing both examples:
+After completing the LLM and image classifier examples:
 
 1. **Combine Concepts**: Build an image captioning model (CNN encoder + Transformer decoder)
 2. **Transfer Learning**: Use pre-trained models from `torchvision.models`
@@ -362,7 +393,7 @@ This project is open source and available for educational purposes.
 **Happy Learning! 🚀**
 
 
-Start with either example, experiment, and most importantly - have fun building with PyTorch!
+Start with any example, experiment, and most importantly - have fun building with PyTorch!
 
 ## Next Steps to Explore
 - **Hyperparameters**: Try changing `n_layer`, `n_head`, or `n_embd` in `model.py` and see how it affects training speed and generated text quality.
@@ -391,4 +422,3 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
 This example downloads the Wikitext-2 dataset and GPT-2 model, then generates text from the first dataset sample.
-

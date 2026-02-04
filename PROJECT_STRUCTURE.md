@@ -10,7 +10,7 @@ This document provides an overview of all files in the PyTorch Starter project.
 pytorch-starter/
 ├── README.md                 # Main project documentation
 ├── QUICKSTART.md            # Step-by-step getting started guide
-├── COMPARISON.md            # Detailed comparison of both examples
+├── COMPARISON.md            # Detailed comparison of LLM + image classifier
 ├── requirements.txt         # Python dependencies
 ├── .gitignore              # Git ignore rules
 │
@@ -28,6 +28,17 @@ pytorch-starter/
 │   ├── predict_image.py    # Inference script
 │   └── image_classifier.pth # Trained model (generated)
 │
+├── Example 3: Object Detection
+│   ├── dataset.py           # Dataset helpers
+│   ├── model.py             # Model builder
+│   ├── train.py             # Training scaffold
+│   └── requirements.txt     # Example-specific dependencies
+│
+├── Example 4: Diffusion Model
+│   ├── dataset.py           # MNIST data loading
+│   ├── model.py             # Noise predictor model
+│   └── train.py             # Training script
+│
 └── data/                    # Data directory (auto-created)
     ├── tinyshakespeare.txt  # Shakespeare text (LLM)
     └── cifar-10-batches-py/ # CIFAR-10 dataset (Image)
@@ -42,7 +53,7 @@ pytorch-starter/
 #### `README.md`
 - **Purpose**: Main project documentation
 - **Contents**: 
-  - Overview of both examples
+  - Overview of the LLM and image classifier examples
   - Quick start instructions
   - Learning guides
   - Suggested experiments
@@ -64,7 +75,7 @@ pytorch-starter/
   - Architecture explanations
   - Use case recommendations
   - Hyperparameter tuning guide
-- **Read this**: After running both examples
+- **Read this**: After running the LLM and image classifier examples
 
 ---
 
@@ -325,6 +336,56 @@ Predictions (Top 5)
 
 ---
 
+### Example 3: Object Detection
+
+#### `dataset.py`
+**Purpose**: Dataset and data loading helpers for detection tasks.
+
+**What it does**:
+- Defines a dataset interface returning images and target dictionaries.
+- Serves as a scaffold for COCO/VOC/custom datasets.
+
+#### `model.py`
+**Purpose**: Model builder for `torchvision` detection architectures.
+
+**What it does**:
+- Initializes a detection model and configures the number of classes.
+
+#### `train.py`
+**Purpose**: Training loop scaffold for detection.
+
+**What it does**:
+- Iterates over data loaders and updates model weights.
+- Provides a template for adding evaluation and metrics.
+
+---
+
+### Example 4: Diffusion Model
+
+#### `dataset.py`
+**Purpose**: Load MNIST digits with normalization for diffusion training.
+
+**What it does**:
+- Downloads MNIST automatically.
+- Normalizes images to [-1, 1].
+
+#### `model.py`
+**Purpose**: Lightweight noise prediction network with timestep embeddings.
+
+**What it does**:
+- Embeds diffusion timesteps with sinusoidal features.
+- Predicts noise for DDPM-style training.
+
+#### `train.py`
+**Purpose**: Diffusion training loop on MNIST.
+
+**What it does**:
+- Samples random timesteps and noise.
+- Trains the model to predict the injected noise.
+- Saves a trained checkpoint for later sampling.
+
+---
+
 ### Configuration Files
 
 #### `requirements.txt`
@@ -383,7 +444,7 @@ python predict_image.py  # Test predictions
 ### Learning the Code
 1. **Beginners**: Start with `image_model.py` (SimpleCNN)
 2. **Intermediate**: Read `model.py` (Transformer)
-3. **Advanced**: Compare both, read `COMPARISON.md`
+3. **Advanced**: Compare the LLM and image classifier, read `COMPARISON.md`
 
 ### Modifying the Code
 1. **Change hyperparameters**: Edit configuration section in training scripts
@@ -432,7 +493,7 @@ These files are created when you run the examples:
 
 ### Week 1: Basics
 - [ ] `README.md` - Understand project overview
-- [ ] `QUICKSTART.md` - Run both examples
+- [ ] `QUICKSTART.md` - Run the LLM and image classifier examples
 - [ ] `requirements.txt` - Understand dependencies
 
 ### Week 2: Image Classifier
@@ -447,7 +508,7 @@ These files are created when you run the examples:
 - [ ] `train.py` - Autoregressive training
 
 ### Week 4: Advanced
-- [ ] `COMPARISON.md` - Compare both approaches
+- [ ] `COMPARISON.md` - Compare the LLM and image classifier approaches
 - [ ] Modify architectures
 - [ ] Implement custom features
 
