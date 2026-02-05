@@ -149,6 +149,40 @@ cd example-diffusion-model
 
 ---
 
+## 🎮 Example 4: Reinforcement Learning (Bandit)
+
+### Navigate to the example
+
+```bash
+cd example-reinforcement-learning
+```
+
+### Step-by-step
+
+1. **Train the RL policy:**
+   ```bash
+   python train.py --episodes 3000 --arm-probs 0.15 0.4 0.6 0.8
+   ```
+   - Trains with REINFORCE on a Bernoulli multi-armed bandit
+   - Prints moving-average reward and current greedy arm
+   - Converges toward the best arm in most runs
+
+2. **What to expect:**
+   ```
+   Episode   200 | avg_reward(200)=0.515 | greedy_arm=2
+   ...
+   Learned best arm: 3
+   True best arm:    3
+   ```
+
+### Files to explore
+- `environment.py` - Minimal multi-armed bandit environment
+- `model.py` - Categorical policy
+- `train.py` - Policy-gradient training loop
+- `README.md` - Detailed documentation
+
+---
+
 ## 🎯 Tips for Success
 
 ### For LLM Example:
@@ -197,6 +231,11 @@ BATCH_SIZE = 64  # or 32
 - Increase `--timesteps` for higher-quality samples
 - Add a sampling script to visualize generated digits
 - Try Fashion-MNIST for a slightly harder dataset
+
+### For Reinforcement Learning:
+- Use more episodes if the policy is unstable
+- Lower `--learning-rate` for smoother convergence
+- Try harder settings by making arm probabilities close
 
 ### Import errors after reorganization
 Make sure you're in the correct directory:
