@@ -39,6 +39,12 @@ pytorch-starter/
 │   ├── model.py             # Noise predictor model
 │   └── train.py             # Training script
 │
+├── Example 5: Reinforcement Learning
+│   ├── environment.py       # Bernoulli multi-armed bandit environment
+│   ├── model.py             # Learnable categorical policy
+│   ├── train.py             # REINFORCE training loop
+│   └── README.md            # Example-specific guide
+│
 └── data/                    # Data directory (auto-created)
     ├── tinyshakespeare.txt  # Shakespeare text (LLM)
     └── cifar-10-batches-py/ # CIFAR-10 dataset (Image)
@@ -53,7 +59,7 @@ pytorch-starter/
 #### `README.md`
 - **Purpose**: Main project documentation
 - **Contents**: 
-  - Overview of the LLM and image classifier examples
+  - Overview of all example projects (LLM, CV, diffusion, RL)
   - Quick start instructions
   - Learning guides
   - Suggested experiments
@@ -552,3 +558,22 @@ After understanding all files:
 ---
 
 Happy Coding! 🎉
+
+
+---
+
+### Example 5: Reinforcement Learning
+
+#### `environment.py`
+**Purpose**: Defines a Bernoulli multi-armed bandit with configurable reward probabilities.
+
+#### `model.py`
+**Purpose**: Implements a categorical policy parameterized by trainable logits.
+
+#### `train.py`
+**Purpose**: Trains the policy using the REINFORCE algorithm with a moving-average baseline.
+
+**Core Concepts**:
+- Exploration vs exploitation
+- Policy gradients
+- Reward optimization without supervised labels
