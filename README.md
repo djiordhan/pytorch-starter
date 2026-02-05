@@ -6,6 +6,7 @@ This project provides beginner-friendly introductions to PyTorch with **multiple
 2. **Image Classifier (CIFAR-10)** - Computer vision with CNNs
 3. **Object Detection** - Lightweight scaffolding for detection models
 4. **Diffusion Model (MNIST)** - Generative modeling with noise prediction
+5. **Reinforcement Learning (Bandit)** - Policy gradients with REINFORCE
 
 Each example is in its own directory with dedicated documentation and data storage.
 
@@ -46,11 +47,17 @@ pytorch-starter/
 │   ├── train.py                   # Training scaffold
 │   └── requirements.txt           # Example-specific dependencies
 │
-└── example-diffusion-model/       # Example 4: Diffusion Model
-    ├── README.md                  # Diffusion model documentation
-    ├── dataset.py                 # MNIST data loader
-    ├── model.py                   # Noise predictor model
-    └── train.py                   # Training script
+├── example-diffusion-model/       # Example 4: Diffusion Model
+│   ├── README.md                  # Diffusion model documentation
+│   ├── dataset.py                 # MNIST data loader
+│   ├── model.py                   # Noise predictor model
+│   └── train.py                   # Training script
+│
+└── example-reinforcement-learning/ # Example 5: Reinforcement Learning
+    ├── README.md                  # RL example documentation
+    ├── environment.py             # Multi-armed bandit environment
+    ├── model.py                   # Policy network
+    └── train.py                   # REINFORCE training script
 ```
 
 ---
@@ -111,6 +118,19 @@ python train.py --epochs 5 --batch-size 128
 **Result:** Learns to predict noise on MNIST digits for a DDPM-style setup.
 
 📖 **[Read the Diffusion README](example-diffusion-model/README.md)** for detailed instructions.
+
+### Example 4: Reinforcement Learning (Bandit)
+
+```bash
+cd example-reinforcement-learning
+
+# Train policy with REINFORCE
+python train.py --episodes 3000
+```
+
+**Result:** Learns to favor the highest-reward arm through trial-and-error.
+
+📖 **[Read the RL README](example-reinforcement-learning/README.md)** for detailed instructions.
 
 ---
 
@@ -173,6 +193,7 @@ They teach complementary concepts:
 - **LLM**: Sequence modeling, attention, autoregressive generation
 - **Image Classifier**: Spatial features, data augmentation, classification metrics
 - **Diffusion**: Generative modeling with noise schedules
+- **Reinforcement Learning**: Exploration, policy gradients, reward optimization
 
 ---
 
@@ -200,6 +221,7 @@ Each example has its own comprehensive README:
 - **[example-image-classifier/README.md](example-image-classifier/README.md)** - Complete guide for the image classifier
 - **[example-object-detection/README.md](example-object-detection/README.md)** - Guide for the object detection scaffold
 - **[example-diffusion-model/README.md](example-diffusion-model/README.md)** - Complete guide for the diffusion model
+- **[example-reinforcement-learning/README.md](example-reinforcement-learning/README.md)** - Complete guide for the RL bandit example
 
 Additional documentation:
 
