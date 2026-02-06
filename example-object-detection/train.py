@@ -14,6 +14,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-classes", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=2)
     parser.add_argument("--epochs", type=int, default=1)
+    parser.add_argument("--learning-rate", type=float, default=0.005)
+    parser.add_argument("--save-path", type=Path, default=Path("detector.pth"))
     return parser.parse_args()
 
 
@@ -34,25 +36,33 @@ def main() -> None:
 
     optimizer = torch.optim.SGD(
         [p for p in model.parameters() if p.requires_grad],
-        lr=0.005,
+        lr=args.learning_rate,
         momentum=0.9,
         weight_decay=0.0005,
     )
 
     model.train()
-    for _ in range(args.epochs):
-        for images, targets in data_loader:
+    for epoch in range(args.epochs):
+        running_loss = 0.0
+        for step, (images, targets) in enumerate(data_loader, start=1):
             images = [image.to(device) for image in images]
             targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
             loss_dict = model(images, targets)
-            loss = sum(loss for loss in loss_dict.values())
+            loss = sum(loss_value for loss_value in loss_dict.values())
 
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-    print("Training complete")
+            running_loss += loss.item()
+            if step % 10 == 0 or step == len(data_loader):
+                avg = running_loss / step
+                print(f"epoch={epoch + 1} step={step}/{len(data_loader)} avg_loss={avg:.4f}")
+
+    args.save_path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(model.state_dict(), args.save_path)
+    print(f"Training complete. Model saved to {args.save_path}")
 
 
 if __name__ == "__main__":
