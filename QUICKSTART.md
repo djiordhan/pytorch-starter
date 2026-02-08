@@ -115,7 +115,26 @@ MODEL_TYPE = 'resnet'  # instead of 'simple'
 
 ---
 
-## ✨ Example 3: Diffusion Model (MNIST)
+## 🧩 Example 3: Semantic Segmentation
+
+```bash
+cd example-semantic-segmentation
+
+# Create toy data
+python create_toy_data.py --output-dir toy_data --num-images 40
+
+# Train the model
+python train.py --data-root toy_data --epochs 1
+
+# Run inference
+python predict.py --weights segmenter.pth --image toy_data/images/img_0000.png
+```
+
+**Result:** Produces a pixel-wise mask overlay for synthetic shapes.
+
+---
+
+## ✨ Example 4: Diffusion Model (MNIST)
 
 ### Navigate to the example
 
@@ -149,7 +168,7 @@ cd example-diffusion-model
 
 ---
 
-## 🎮 Example 4: Reinforcement Learning (Bandit)
+## 🎮 Example 5: Reinforcement Learning (Bandit)
 
 ### Navigate to the example
 
@@ -183,7 +202,7 @@ cd example-reinforcement-learning
 
 ---
 
-## 📈 Example 5: Tabular ML (Binary Classification)
+## 📈 Example 6: Tabular ML (Binary Classification)
 
 ### Navigate to the example
 
@@ -374,6 +393,15 @@ pytorch-starter/
 │   ├── dataset.py
 │   ├── model.py
 │   ├── train.py
+│   └── requirements.txt
+│
+├── example-semantic-segmentation/ # Semantic Segmentation Example
+│   ├── README.md
+│   ├── create_toy_data.py
+│   ├── dataset.py
+│   ├── model.py
+│   ├── train.py
+│   ├── predict.py
 │   └── requirements.txt
 │
 ├── example-diffusion-model/  # Diffusion Model Example

@@ -5,9 +5,10 @@ This project provides beginner-friendly introductions to PyTorch with **multiple
 1. **Character-Level Language Model (LLM)** - Text generation using Transformers
 2. **Image Classifier (CIFAR-10)** - Computer vision with CNNs
 3. **Object Detection** - Lightweight scaffolding for detection models
-4. **Diffusion Model (MNIST)** - Generative modeling with noise prediction
-5. **Reinforcement Learning (Bandit)** - Policy gradients with REINFORCE
-6. **Tabular ML (Binary Classification)** - MLP on synthetic tabular data
+4. **Semantic Segmentation** - Pixel-wise labeling with segmentation models
+5. **Diffusion Model (MNIST)** - Generative modeling with noise prediction
+6. **Reinforcement Learning (Bandit)** - Policy gradients with REINFORCE
+7. **Tabular ML (Binary Classification)** - MLP on synthetic tabular data
 
 Each example is in its own directory with dedicated documentation and data storage.
 
@@ -48,19 +49,28 @@ pytorch-starter/
 │   ├── train.py                   # Training scaffold
 │   └── requirements.txt           # Example-specific dependencies
 │
-├── example-diffusion-model/       # Example 4: Diffusion Model
+├── example-semantic-segmentation/ # Example 4: Semantic Segmentation
+│   ├── README.md                  # Segmentation documentation
+│   ├── create_toy_data.py         # Toy data generator
+│   ├── dataset.py                 # Dataset helpers
+│   ├── model.py                   # Model builder
+│   ├── train.py                   # Training scaffold
+│   ├── predict.py                 # Inference script
+│   └── requirements.txt           # Example-specific dependencies
+│
+├── example-diffusion-model/       # Example 5: Diffusion Model
 │   ├── README.md                  # Diffusion model documentation
 │   ├── dataset.py                 # MNIST data loader
 │   ├── model.py                   # Noise predictor model
 │   └── train.py                   # Training script
 │
-├── example-reinforcement-learning/ # Example 5: Reinforcement Learning
+├── example-reinforcement-learning/ # Example 6: Reinforcement Learning
 │   ├── README.md                  # RL example documentation
 │   ├── environment.py             # Multi-armed bandit environment
 │   ├── model.py                   # Policy network
 │   └── train.py                   # REINFORCE training script
 │
-└── example-tabular-ml/            # Example 6: Tabular ML
+└── example-tabular-ml/            # Example 7: Tabular ML
     ├── README.md                  # Tabular ML documentation
     ├── tabular_dataset.py         # Synthetic data generation
     ├── tabular_model.py           # MLP architecture
@@ -114,7 +124,26 @@ python predict_image.py path/to/image.jpg
 
 📖 **[Read the Image Classifier README](example-image-classifier/README.md)** for detailed instructions.
 
-### Example 3: Diffusion Model (MNIST)
+### Example 3: Semantic Segmentation
+
+```bash
+cd example-semantic-segmentation
+
+# Create toy dataset
+python create_toy_data.py --output-dir toy_data --num-images 40
+
+# Train the model
+python train.py --data-root toy_data --epochs 1
+
+# Run inference
+python predict.py --weights segmenter.pth --image toy_data/images/img_0000.png
+```
+
+**Result:** Produces a pixel-wise mask overlay for synthetic shapes.
+
+📖 **[Read the Semantic Segmentation README](example-semantic-segmentation/README.md)** for detailed instructions.
+
+### Example 4: Diffusion Model (MNIST)
 
 ```bash
 cd example-diffusion-model
@@ -127,7 +156,7 @@ python train.py --epochs 5 --batch-size 128
 
 📖 **[Read the Diffusion README](example-diffusion-model/README.md)** for detailed instructions.
 
-### Example 4: Reinforcement Learning (Bandit)
+### Example 5: Reinforcement Learning (Bandit)
 
 ```bash
 cd example-reinforcement-learning
@@ -140,7 +169,7 @@ python train.py --episodes 3000
 
 📖 **[Read the RL README](example-reinforcement-learning/README.md)** for detailed instructions.
 
-### Example 5: Tabular ML (Binary Classification)
+### Example 6: Tabular ML (Binary Classification)
 
 ```bash
 cd example-tabular-ml
@@ -245,6 +274,7 @@ Each example has its own comprehensive README:
 - **[example-llm/README.md](example-llm/README.md)** - Complete guide for the language model
 - **[example-image-classifier/README.md](example-image-classifier/README.md)** - Complete guide for the image classifier
 - **[example-object-detection/README.md](example-object-detection/README.md)** - Guide for the object detection scaffold
+- **[example-semantic-segmentation/README.md](example-semantic-segmentation/README.md)** - Guide for the semantic segmentation scaffold
 - **[example-diffusion-model/README.md](example-diffusion-model/README.md)** - Complete guide for the diffusion model
 - **[example-reinforcement-learning/README.md](example-reinforcement-learning/README.md)** - Complete guide for the RL bandit example
 - **[example-tabular-ml/README.md](example-tabular-ml/README.md)** - Complete guide for the tabular ML example
