@@ -183,6 +183,39 @@ cd example-reinforcement-learning
 
 ---
 
+## 📈 Example 5: Tabular ML (Binary Classification)
+
+### Navigate to the example
+
+```bash
+cd example-tabular-ml
+```
+
+### Step-by-step
+
+1. **Train the MLP classifier:**
+   ```bash
+   python train_tabular.py
+   ```
+   - Builds a synthetic dataset with 12 numerical features
+   - Standardizes the features using training statistics
+   - Saves the best checkpoint to `tabular_classifier.pth`
+
+2. **Run inference:**
+   ```bash
+   python predict_tabular.py
+   ```
+   - Uses a random synthetic feature vector
+
+### Files to explore
+- `tabular_dataset.py` - Synthetic data generation + dataloaders
+- `tabular_model.py` - MLP architecture
+- `train_tabular.py` - Training loop + checkpointing
+- `predict_tabular.py` - Inference script
+- `README.md` - Detailed documentation
+
+---
+
 ## 🎯 Tips for Success
 
 ### For LLM Example:
@@ -336,11 +369,31 @@ pytorch-starter/
 │   ├── predict_image.py
 │   └── data/                 # Image data directory
 │
-└── example-diffusion-model/  # Diffusion Model Example
+├── example-object-detection/ # Object Detection Example
+│   ├── README.md
+│   ├── dataset.py
+│   ├── model.py
+│   ├── train.py
+│   └── requirements.txt
+│
+├── example-diffusion-model/  # Diffusion Model Example
+│   ├── README.md
+│   ├── dataset.py
+│   ├── model.py
+│   └── train.py
+│
+├── example-reinforcement-learning/ # Reinforcement Learning Example
+│   ├── README.md
+│   ├── environment.py
+│   ├── model.py
+│   └── train.py
+│
+└── example-tabular-ml/        # Tabular ML Example
     ├── README.md
-    ├── dataset.py
-    ├── model.py
-    └── train.py
+    ├── tabular_dataset.py
+    ├── tabular_model.py
+    ├── train_tabular.py
+    └── predict_tabular.py
 ```
 
 ---

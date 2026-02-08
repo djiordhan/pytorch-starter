@@ -45,6 +45,13 @@ pytorch-starter/
 │   ├── train.py             # REINFORCE training loop
 │   └── README.md            # Example-specific guide
 │
+├── Example 6: Tabular ML
+│   ├── tabular_dataset.py   # Synthetic data generation + splits
+│   ├── tabular_model.py     # MLP classifier
+│   ├── train_tabular.py     # Training loop + checkpointing
+│   ├── predict_tabular.py   # Inference script
+│   └── README.md            # Example-specific guide
+│
 └── data/                    # Data directory (auto-created)
     ├── tinyshakespeare.txt  # Shakespeare text (LLM)
     └── cifar-10-batches-py/ # CIFAR-10 dataset (Image)
@@ -59,7 +66,7 @@ pytorch-starter/
 #### `README.md`
 - **Purpose**: Main project documentation
 - **Contents**: 
-  - Overview of all example projects (LLM, CV, diffusion, RL)
+  - Overview of all example projects (LLM, CV, diffusion, RL, tabular ML)
   - Quick start instructions
   - Learning guides
   - Suggested experiments
@@ -577,3 +584,19 @@ Happy Coding! 🎉
 - Exploration vs exploitation
 - Policy gradients
 - Reward optimization without supervised labels
+
+---
+
+### Example 6: Tabular ML
+
+#### `tabular_dataset.py`
+**Purpose**: Generates a synthetic binary classification dataset, creates train/val/test splits, and standardizes features.
+
+#### `tabular_model.py`
+**Purpose**: Defines a lightweight MLP for tabular classification.
+
+#### `train_tabular.py`
+**Purpose**: Trains the MLP with `BCEWithLogitsLoss` and saves the best checkpoint with feature statistics.
+
+#### `predict_tabular.py`
+**Purpose**: Loads the saved checkpoint and runs inference on new feature vectors.
