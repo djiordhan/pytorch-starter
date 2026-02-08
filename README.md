@@ -7,6 +7,7 @@ This project provides beginner-friendly introductions to PyTorch with **multiple
 3. **Object Detection** - Lightweight scaffolding for detection models
 4. **Diffusion Model (MNIST)** - Generative modeling with noise prediction
 5. **Reinforcement Learning (Bandit)** - Policy gradients with REINFORCE
+6. **Tabular ML (Binary Classification)** - MLP on synthetic tabular data
 
 Each example is in its own directory with dedicated documentation and data storage.
 
@@ -53,11 +54,18 @@ pytorch-starter/
 │   ├── model.py                   # Noise predictor model
 │   └── train.py                   # Training script
 │
-└── example-reinforcement-learning/ # Example 5: Reinforcement Learning
-    ├── README.md                  # RL example documentation
-    ├── environment.py             # Multi-armed bandit environment
-    ├── model.py                   # Policy network
-    └── train.py                   # REINFORCE training script
+├── example-reinforcement-learning/ # Example 5: Reinforcement Learning
+│   ├── README.md                  # RL example documentation
+│   ├── environment.py             # Multi-armed bandit environment
+│   ├── model.py                   # Policy network
+│   └── train.py                   # REINFORCE training script
+│
+└── example-tabular-ml/            # Example 6: Tabular ML
+    ├── README.md                  # Tabular ML documentation
+    ├── tabular_dataset.py         # Synthetic data generation
+    ├── tabular_model.py           # MLP architecture
+    ├── train_tabular.py           # Training script
+    └── predict_tabular.py         # Inference script
 ```
 
 ---
@@ -132,6 +140,22 @@ python train.py --episodes 3000
 
 📖 **[Read the RL README](example-reinforcement-learning/README.md)** for detailed instructions.
 
+### Example 5: Tabular ML (Binary Classification)
+
+```bash
+cd example-tabular-ml
+
+# Train the MLP classifier
+python train_tabular.py
+
+# Run inference
+python predict_tabular.py
+```
+
+**Result:** Learns a decision boundary on synthetic numerical features.
+
+📖 **[Read the Tabular ML README](example-tabular-ml/README.md)** for detailed instructions.
+
 ---
 
 ## 📚 What You'll Learn
@@ -194,6 +218,7 @@ They teach complementary concepts:
 - **Image Classifier**: Spatial features, data augmentation, classification metrics
 - **Diffusion**: Generative modeling with noise schedules
 - **Reinforcement Learning**: Exploration, policy gradients, reward optimization
+- **Tabular ML**: Feature standardization, MLPs for structured data
 
 ---
 
@@ -222,6 +247,7 @@ Each example has its own comprehensive README:
 - **[example-object-detection/README.md](example-object-detection/README.md)** - Guide for the object detection scaffold
 - **[example-diffusion-model/README.md](example-diffusion-model/README.md)** - Complete guide for the diffusion model
 - **[example-reinforcement-learning/README.md](example-reinforcement-learning/README.md)** - Complete guide for the RL bandit example
+- **[example-tabular-ml/README.md](example-tabular-ml/README.md)** - Complete guide for the tabular ML example
 
 Additional documentation:
 
